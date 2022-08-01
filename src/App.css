@@ -1,23 +1,36 @@
-.boton {
-    margin: 5px;
-    width: 100px;
-    height: 30px;
-    border: none;
-    background-color: blue;
-    opacity: 0.7;
-    color: white;
-}
 
 .container-button {
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    margin: 50px;
+    
 }
 
-.green {
-   color: green;
+.odd {
+   background-color: rgb(255, 255, 255);
 }
 
-.red {
-    color: red;
+.even{
+    background-color: rgb(240, 238, 238);
+}
+
+.container-list {
+    max-width: 676px;
+    margin: 0 auto;
+}
+
+.circulo {
+    background-color: red;
+    border-radius: 50%;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    width: 25px;
+    height: 25px;
+
 }
