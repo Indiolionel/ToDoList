@@ -15,7 +15,6 @@ export default function Card({ name, url }) {
                 console.log(`Tu error es ${error}`)
             });
     }, [url])
-    console.log("Name: "+name)
 
     return (
 

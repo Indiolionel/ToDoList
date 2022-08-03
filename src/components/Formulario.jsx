@@ -22,8 +22,8 @@ export default function Formulario() {
 
   function handleDelete() {
     Swal.fire({
-      title: 'OJO!',
-      text: 'Estas seguro que quieres eliminarlo ?',
+      title: 'Eliminar Todos!',
+      text: 'Estas seguro que quieres eliminar todos ?',
       icon: 'error',
       confirmButtonText: 'Aceptar',
       showCancelButton: true,

@@ -27,7 +27,7 @@ export default function Tarea({ item }) {
   function eliminar({ item }) {
 
     Swal.fire({
-      title: 'OJO!',
+      title: 'Eliminar!',
       text: 'Estas seguro que quieres eliminarlo ?',
       icon: 'error',
       confirmButtonText: 'Aceptar',

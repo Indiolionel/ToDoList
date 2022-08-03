@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react'
 import FormContext from './FormContext';
-
+import { Link } from 'react-router-dom';
 
 export default function Home() {
 
@@ -19,10 +19,10 @@ export default function Home() {
     </h2>
     <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
       <div className="inline-flex rounded-md shadow">
-        <a href="./lista" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"> Ir a Tareas </a>
+        <Link to="./lista" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"> Ir a Tareas </Link>
       </div>
       <div className="ml-3 inline-flex rounded-md shadow">
-        <a href="./poke-api" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"> Ir a Poke-api </a>
+        <Link to="./poke-api" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"> Ir a Poke-api </Link>
       </div>
     </div>
   </div>
