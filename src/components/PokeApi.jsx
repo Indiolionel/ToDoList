@@ -3,13 +3,17 @@ import React, { useEffect, useContext, useState } from 'react'
 import Card from './Card.jsx';
 import FormContext from './FormContext';
 
+
 export default function PokeApi() {
 
   const { dispatch } = useContext(FormContext);
   const [data, setData] = useState([])
-  const [disabled, setDisabled] = useState("nada")
   const [contador, setContador] = useState(0)
-  const url = `https://pokeapi.co/api/v2/pokemon?offset=${contador}&limit=20 `
+  const [value, setValue] = useState("")
+
+  
+  const url = `https://pokeapi.co/api/v2/pokemon`
+
 
   useEffect(() => {
     dispatch({ type: "load-from-localStorage" })
@@ -18,9 +22,7 @@ export default function PokeApi() {
 
   useEffect(() => {
 
-
-
-    axios.get(url).then((response => {
+    axios.get(`${url}?offset=${contador}&limit=20`).then((response => {
       setData(response.data.results)
 
     })
@@ -31,7 +33,6 @@ export default function PokeApi() {
 
   }, [contador])
 
-  // data && console.log(data)
 
 
 
@@ -39,12 +40,21 @@ export default function PokeApi() {
     setContador(contador + 20)
   }
 
-
-
   function atras() {
     setContador(contador - 20)
   }
 
+  function filterPokemon() {
+    axios.get(`${url}?limit=100000&offset=0`).then((response => {
+      setData(response.data.results.filter((pokemon)=>pokemon.name==value.toLocaleLowerCase()))
+    }))
+      .catch((error) => {
+        console.log(`Tu error es ${error}`)
+      });
+            
+      setValue("")
+      
+  }
 
   return (
 
@@ -57,11 +67,17 @@ export default function PokeApi() {
         <button onClick={() => siguiente()} className="ml-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
           Siguiente
         </button>
-        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        
+        <input className='ml-60 ' type="text" placeholder='Ingrese Pokemon' value={value} onChange={(e) => setValue(e.target.value)} />
+        <button onClick={() => filterPokemon()} className="ml-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+          Aceptar
+        </button>
+        {data.length>0 ? <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"> 
           {data.map((pokemon, index) => {
-            return <Card name={pokemon.name} url={pokemon.url} key={index} />
+            return <Card name={pokemon.name}  url={pokemon.url} key={index} />
+
           })}
-        </div>
+        </div>: <div className='text-center mt-56 text-3xl font-bold text-indigo-900'>No Existe Pokemon!!</div>}
       </div>
     </div>
 

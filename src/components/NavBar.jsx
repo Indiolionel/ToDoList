@@ -2,11 +2,13 @@ import { Fragment, useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import FormContext from './FormContext'
+import { Link, useLocation  } from "react-router-dom";
+
 
 const navigation = [
-  { name: 'Home', href: '/', current: false },
-  { name: 'Lista de tareas', href: '/lista', current: false },
-  { name: 'PokeApi', href: '/poke-api', current: false },
+  { name: 'Home', href: '/' },
+  { name: 'Lista de tareas', href: '/lista'},
+  { name: 'PokeApi', href: '/poke-api'},
 ]
 
 function classNames(...classes) {
@@ -17,7 +19,7 @@ function classNames(...classes) {
 export default function NavBar() {
 
   const {state} = useContext(FormContext)
-
+  const location = useLocation();
   const hasTask = state && state.length > 0 ;
 
   const listNumber = state.length;
@@ -40,33 +42,22 @@ export default function NavBar() {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex-shrink-0 flex items-center">
-                  <img
-                    className="block lg:hidden h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                    alt="Workflow"
-                  />
-                  <img
-                    className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                    alt="Workflow"
-                  />
-                </div>
+              
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'flex text-gray-300 hover:bg-gray-700 hover:text-white',
+                          location.pathname==item.href ? 'flex bg-gray-900 text-white' : 'flex text-gray-300 hover:bg-gray-700 hover:text-white',
                           'px-3 py-2 rounded-md text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
                         {item.name=="Lista de tareas"&& hasTask && <div className='circulo'>{listNumber}</div>}
-                      </a>
+                      </Link>
                       
                       
                     ))}
@@ -76,15 +67,9 @@ export default function NavBar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-
-                {/* Profile dropdown */}
+              <div className="flex-shrink-0 flex items-center">
+                  <p className='text-2xl text-zinc-200	'>React N°2</p>
+                </div>
                 <Menu as="div" className="ml-3 relative">
                   
                   <Transition

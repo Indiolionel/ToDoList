@@ -7,6 +7,8 @@ import {
 import { Menu, Transition } from '@headlessui/react'
 import React, { useContext } from 'react';
 import FormContext from './FormContext';
+import Swal from 'sweetalert2'
+
 
 
 
@@ -24,7 +26,19 @@ export default function Tarea({ item }) {
 
   function eliminar({ item }) {
 
-    dispatch({ type: "delete-row", value: item })
+    Swal.fire({
+      title: 'OJO!',
+      text: 'Estas seguro que quieres eliminarlo ?',
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+      showCancelButton: true,
+      cancelButtonText: "Cancelar"
+
+    })
+      .then((res) => {
+        res.isConfirmed && dispatch({ type: "delete-row", value: item })
+      })
+    
 
   }
 

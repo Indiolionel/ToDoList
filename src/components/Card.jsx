@@ -5,6 +5,7 @@ import axios from 'axios';
 export default function Card({ name, url }) {
     const [id, setId] = useState("")
     const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+    
     useEffect(() => {
         axios.get(url).then((response => {
             setId(response.data.id)
@@ -13,12 +14,12 @@ export default function Card({ name, url }) {
             .catch((error) => {
                 console.log(`Tu error es ${error}`)
             });
-
     }, [url])
+    console.log("Name: "+name)
 
     return (
 
-        <div className="group relative">
+      name ?  <div className="group relative">
             <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none flex flex-col justify-end ">
                 <img
                     src={image}
@@ -37,7 +38,7 @@ export default function Card({ name, url }) {
                     </h3>
                 </div>
             </div>
-        </div>
+        </div> : <div>No existe el pokemon!!</div>
 
     )
 }

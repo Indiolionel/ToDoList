@@ -9,7 +9,6 @@ export default function List() {
     FormContext
   );
   const values = [...state]
-  console.log(values)
   return (
     <div className='container-list flex flex-col'>
         {values.map((item,index)=>{
