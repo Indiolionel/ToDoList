@@ -11,7 +11,7 @@ export default function PokeApi() {
   const [contador, setContador] = useState(0)
   const [value, setValue] = useState("")
 
-  
+
   const url = `https://pokeapi.co/api/v2/pokemon`
 
 
@@ -46,15 +46,17 @@ export default function PokeApi() {
 
   function filterPokemon() {
     axios.get(`${url}?limit=100000&offset=0`).then((response => {
-      setData(response.data.results.filter((pokemon)=>pokemon.name==value.toLocaleLowerCase()))
+      setData(response.data.results.filter((pokemon) => pokemon.name == value.toLocaleLowerCase()))
+      
     }))
       .catch((error) => {
         console.log(`Tu error es ${error}`)
       });
-            
-      setValue("")
-      
+
+    setValue("")
+
   }
+  console.log(data)
 
   return (
 
@@ -67,17 +69,17 @@ export default function PokeApi() {
         <button onClick={() => siguiente()} className="ml-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
           Siguiente
         </button>
-        
+
         <input className='ml-60 ' type="text" placeholder='Ingrese Pokemon' value={value} onChange={(e) => setValue(e.target.value)} />
         <button onClick={() => filterPokemon()} className="ml-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
           Aceptar
         </button>
-        {data.length>0 ? <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"> 
+        {data.length > 0 ? <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {data.map((pokemon, index) => {
-            return <Card name={pokemon.name}  url={pokemon.url} key={index} />
+            return <Card name={pokemon.name} url={pokemon.url} key={index} />
 
           })}
-        </div>: <div className='text-center mt-56 text-3xl font-bold text-indigo-900'>No Existe Pokemon!!</div>}
+        </div> : <div className='text-center mt-56 text-3xl font-bold text-indigo-900'>No Existe Pokemon!!</div>}
       </div>
     </div>
 

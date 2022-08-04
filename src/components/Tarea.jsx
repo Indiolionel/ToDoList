@@ -27,8 +27,8 @@ export default function Tarea({ item }) {
   function eliminar({ item }) {
 
     Swal.fire({
-      title: 'Eliminar!',
-      text: 'Estas seguro que quieres eliminarlo ?',
+      title: '¡Eliminar!',
+      text: '¿ Estas seguro que quieres eliminarlo ?',
       icon: 'error',
       confirmButtonText: 'Aceptar',
       showCancelButton: true,
@@ -38,7 +38,7 @@ export default function Tarea({ item }) {
       .then((res) => {
         res.isConfirmed && dispatch({ type: "delete-row", value: item })
       })
-    
+
 
   }
 
