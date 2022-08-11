@@ -1,8 +1,9 @@
 import { Fragment, useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import FormContext from './FormContext'
+import FormContext from '../Lista/reducerLista.jsx';
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 
 const navigation = [
@@ -18,7 +19,7 @@ function classNames(...classes) {
 
 export default function NavBar() {
 
-  const { state } = useContext(FormContext)
+  const state = useSelector(state => state.lista)
   const location = useLocation();
   const hasTask = state && state.length > 0;
 

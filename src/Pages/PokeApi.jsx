@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useContext, useState } from 'react'
-import Card from './Card.jsx';
-import FormContext from './FormContext';
+import Card from '../components/Card.jsx';
+import FormContext from '../Lista/reducerLista.jsx';
+import { useDispatch } from 'react-redux';
 
 
 export default function PokeApi() {
 
-  const { dispatch } = useContext(FormContext);
+  const dispatch = useDispatch()
   const [data, setData] = useState([])
   const [contador, setContador] = useState(0)
   const [value, setValue] = useState("")

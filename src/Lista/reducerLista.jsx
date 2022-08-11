@@ -2,7 +2,10 @@ import { createContext } from "react";
 
 export default createContext(null);
 
-export function reducer(state, action) {
+
+
+export function listaReducer(state = [], action) {
+
   switch (action.type) {
 
     case 'add':

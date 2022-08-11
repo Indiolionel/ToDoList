@@ -1,14 +1,16 @@
 import React, { useState, useContext, useEffect } from 'react'
-import Input from "./Input.jsx"
-import Button from './Button.js';
-import FormContext from './FormContext.jsx';
-import List from './List.jsx';
+import Input from "../components/Input.jsx"
+import Button from '../components/Button.js';
+import FormContext from '../Lista/reducerLista.jsx';
+import List from '../components/List.jsx';
 import Swal from 'sweetalert2'
+import { useDispatch } from 'react-redux';
 
 
-export default function Formulario() {
-  const { dispatch } = useContext(FormContext);
+export default function ToDoList() {
+  const dispatch = useDispatch()
   const action = (name) => {
+    
     setValue("")
     dispatch({ type: name, value })
 

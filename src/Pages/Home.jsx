@@ -1,14 +1,15 @@
 import React, { useContext, useEffect } from 'react'
-import FormContext from './FormContext';
+import FormContext from '../Lista/reducerLista.jsx';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 export default function Home() {
 
-  const { dispatch } = useContext(FormContext);
 
-  useEffect(() => {
-    dispatch({ type: "load-from-localStorage" })
-  }, [])
+
+  // useEffect(() => {
+  //   dispatch({ type: "load-from-localStorage" })
+  // }, [])
 
   return (
     <div className="bg-gray-50 my-80">

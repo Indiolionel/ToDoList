@@ -1,32 +1,31 @@
 
 import React, { useReducer } from 'react';
 import './App.css';
-import Formulario from './components/Formulario.jsx';
-import FormContext, { initialValue, reducer } from './components/FormContext';
+import FormContext, { initialValue, lista } from './Lista/reducerLista';
 import NavBar from './components/NavBar';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 import { Route, Routes, } from 'react-router-dom';
-import Home from './components/Home';
-import PokeApi from './components/PokeApi';
+import Home from './Pages/Home';
+import PokeApi from './Pages/PokeApi';
+import ToDoList from './Pages/ToDoList';
 
 function App() {
 
 
-  const [state, dispatch] = useReducer(reducer, initialValue)
 
 
 
   return (
     <>
 
-      <FormContext.Provider value={{ state, dispatch }}>
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="lista" element={<Formulario />} />
+          <Route path="lista" element={<ToDoList />} />
           <Route path="poke-api" element={<PokeApi />} />
         </Routes>
 
-      </FormContext.Provider>
     </>
   )
 

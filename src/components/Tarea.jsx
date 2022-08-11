@@ -6,12 +6,13 @@ import {
 } from '@heroicons/react/solid'
 import { Menu, Transition } from '@headlessui/react'
 import React, { useContext } from 'react';
-import FormContext from './FormContext';
+import FormContext from '../Lista/reducerLista';
 import Swal from 'sweetalert2'
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
-
+const DELETE_ROW = "delete-row"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -20,10 +21,8 @@ function classNames(...classes) {
 
 export default function Tarea({ item }) {
 
-  const { state, dispatch } = useContext(
-    FormContext
-  );
-
+  const state = useSelector(state=>state.lista)
+  const dispatch = useDispatch()
   function eliminar({ item }) {
 
     Swal.fire({
@@ -36,7 +35,7 @@ export default function Tarea({ item }) {
 
     })
       .then((res) => {
-        res.isConfirmed && dispatch({ type: "delete-row", value: item })
+        res.isConfirmed && dispatch({ type: DELETE_ROW, value: item })
       })
 
 
