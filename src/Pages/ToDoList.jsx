@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import Input from "../components/Input.jsx"
 import Button from '../components/Button.js';
-import FormContext from '../Lista/reducerLista.jsx';
 import List from '../components/List.jsx';
 import Swal from 'sweetalert2'
 import { useDispatch } from 'react-redux';
@@ -10,7 +9,7 @@ import { useDispatch } from 'react-redux';
 export default function ToDoList() {
   const dispatch = useDispatch()
   const action = (name) => {
-    
+
     setValue("")
     dispatch({ type: name, value })
 
@@ -18,9 +17,7 @@ export default function ToDoList() {
 
   const [value, setValue] = useState("")
 
-  useEffect(() => {
-    dispatch({ type: "load-from-localStorage" })
-  }, [])
+
 
   function handleDelete() {
     Swal.fire({

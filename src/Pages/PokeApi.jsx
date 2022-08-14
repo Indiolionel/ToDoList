@@ -1,24 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../components/Card.jsx';
-import FormContext from '../Lista/reducerLista.jsx';
-import { useDispatch } from 'react-redux';
 
 
 export default function PokeApi() {
 
-  const dispatch = useDispatch()
   const [data, setData] = useState([])
   const [contador, setContador] = useState(0)
   const [value, setValue] = useState("")
 
 
   const url = `https://pokeapi.co/api/v2/pokemon`
-
-
-  useEffect(() => {
-    dispatch({ type: "load-from-localStorage" })
-  }, [])
 
 
   useEffect(() => {
@@ -48,7 +40,7 @@ export default function PokeApi() {
   function filterPokemon() {
     axios.get(`${url}?limit=100000&offset=0`).then((response => {
       setData(response.data.results.filter((pokemon) => pokemon.name == value.toLocaleLowerCase()))
-      
+
     }))
       .catch((error) => {
         console.log(`Tu error es ${error}`)
@@ -57,7 +49,6 @@ export default function PokeApi() {
     setValue("")
 
   }
-  console.log(data)
 
   return (
 

@@ -1,12 +1,7 @@
-import { Fragment } from 'react'
 import {
   TrashIcon,
-  ChevronDownIcon,
-  PencilIcon,
 } from '@heroicons/react/solid'
 import { Menu, Transition } from '@headlessui/react'
-import React, { useContext } from 'react';
-import FormContext from '../Lista/reducerLista';
 import Swal from 'sweetalert2'
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -21,10 +16,9 @@ function classNames(...classes) {
 
 export default function Tarea({ item }) {
 
-  const state = useSelector(state=>state.lista)
+  const state = useSelector(state => state.lista)
   const dispatch = useDispatch()
-  function eliminar({ item }) {
-
+  function eliminar({ state, item }) {
     Swal.fire({
       title: '¡Eliminar!',
       text: '¿ Estas seguro que quieres eliminarlo ?',

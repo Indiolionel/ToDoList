@@ -1,7 +1,6 @@
-import { Fragment, useContext } from 'react'
+import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import FormContext from '../Lista/reducerLista.jsx';
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
@@ -22,7 +21,6 @@ export default function NavBar() {
   const state = useSelector(state => state.lista)
   const location = useLocation();
   const hasTask = state && state.length > 0;
-
   const listNumber = state.length;
 
   return (
@@ -48,6 +46,7 @@ export default function NavBar() {
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <Link
+                     
                         key={item.name}
                         to={item.href}
                         className={classNames(
@@ -56,13 +55,15 @@ export default function NavBar() {
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
+                         
                         {item.name == "PokeApi" && <img className='w-5 mr-1' src="./img-svg/Pokeball.svg" />}
                         {item.name}
                         {item.name == "Lista de tareas" && hasTask && <div className='circulo'>{listNumber}</div>}
+
                       </Link>
 
-
-                    ))}
+                    )
+                    )}
 
                   </div>
 

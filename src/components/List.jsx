@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
 import { useSelector } from 'react-redux';
-import FormContext from '../Lista/reducerLista.jsx';
 import Tarea from './Tarea.jsx';
 // import Item from './Item';
 
 
 export default function List() {
-  const state = useSelector(state=>state.lista)
+  const state = useSelector(state => state.lista)
   const values = [...state]
   return (
     <div className='container-list flex flex-col'>
@@ -20,3 +18,4 @@ export default function List() {
     </div>
   )
 }
+

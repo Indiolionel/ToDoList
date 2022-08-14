@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import { listaReducer } from "../Lista/reducerLista";
+import { listaReducer } from "../Reducers/reducerLista";
 
 
 const rootReducer = combineReducers({
-    
+
    lista: listaReducer
 
 })
