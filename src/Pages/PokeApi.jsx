@@ -54,18 +54,25 @@ export default function PokeApi() {
 
     <div className="bg-white">
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h2 className="mb-8 text-2xl font-extrabold tracking-tight text-gray-900">Pokemones</h2>
-        <button onClick={() => atras()} disabled={contador == 0} className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded disabled:opacity-25 disabled:cursor-not-allowed `}>
-          Atras
-        </button>
-        <button onClick={() => siguiente()} className="ml-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-          Siguiente
-        </button>
 
-        <input className='ml-60 ' type="text" placeholder='Ingrese Pokemon' value={value} onChange={(e) => setValue(e.target.value)} />
-        <button onClick={() => filterPokemon()} className="ml-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-          Aceptar
-        </button>
+        <div className='flex flex-col justify-center items-center'>
+          <h2 className="mb-8 text-2xl font-extrabold tracking-tight text-gray-900">Pokemones</h2>
+          <div className='flex mb-8'>
+          <input className='w-full border p-2 rounded' type="text" placeholder='Ingrese Pokemon' value={value} onChange={(e) => setValue(e.target.value)} />
+          <button onClick={() => filterPokemon()} className="ml-8 bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            Aceptar
+          </button>
+          </div>
+         <div className='flex justify-center'>
+          <button onClick={() => atras()} disabled={contador == 0} className={`bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 border border-blue-700 rounded disabled:opacity-25 disabled:cursor-not-allowed `}>
+            Atras
+          </button>
+          <button onClick={() => siguiente()} className="ml-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            Siguiente
+          </button>
+          </div>
+        
+        </div>
         {data.length > 0 ? <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {data.map((pokemon, index) => {
             return <Card name={pokemon.name} url={pokemon.url} key={index} />

@@ -33,3 +33,11 @@
     height: 25px;
 
 }
+
+@media (max-width:635px) {
+    .container-todoList {
+        flex-direction: column;
+        height: 100%;
+    
+    }
+}

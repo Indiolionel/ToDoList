@@ -3,10 +3,12 @@ import Input from "../components/Input.jsx"
 import Button from '../components/Button.js';
 import List from '../components/List.jsx';
 import Swal from 'sweetalert2'
-import { useDispatch } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ToDoList() {
+  
+const state = useSelector(state => state.lista)
+console.log(state)
   const dispatch = useDispatch()
   const action = (name) => {
 
@@ -41,10 +43,12 @@ export default function ToDoList() {
         Lista de Tareas
       </div>
 
-      <div className='flex justify-start items-center h-16 w-1/2 rounded-lg m-auto bg-slate-300 px-2 py-0.5'>
+      <div className='container-todoList flex justify-start items-center h-16 w-1/2 rounded-lg m-auto bg-slate-300 px-2 py-0.5'>
         <Input value={value} setValue={setValue} />
+        <div className='container-button m-0'>
         <Button name={"add"} onClick={() => action("add")} isDisabled={!value}>Agregar</Button>
-        <Button name={"delete"} onClick={() => handleDelete()}>Eliminar</Button>
+       <Button name={"delete"} onClick={() => handleDelete() } isDisabled={state.length==0}>Eliminar</Button> 
+      </div>
       </div>
 
       <List />
