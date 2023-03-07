@@ -3,21 +3,20 @@ import Input from "../components/Input.jsx"
 import Button from '../components/Button.js';
 import List from '../components/List.jsx';
 import Swal from 'sweetalert2'
+import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function ToDoList() {
-  
-const state = useSelector(state => state.lista)
-console.log(state)
-  const dispatch = useDispatch()
-  
-  const [value, setValue] = useState("")
-  const [id, setId] = useState(0)
-  
-  const action = (name) => {
 
-    dispatch({ type: name, value:{id,value} })
-    setId(id+1)
+  const state = useSelector(state => state.lista)
+  console.log(state)
+  const dispatch = useDispatch()
+
+  const [value, setValue] = useState("")
+
+  const action = (name) => {
+    const id = uuidv4()
+    dispatch({ type: name, value: { id, value } })
     setValue("")
   }
 
@@ -48,9 +47,9 @@ console.log(state)
       <div className='container-todoList flex justify-start items-center h-16 w-1/2 rounded-lg m-auto bg-slate-300 px-2 py-0.5'>
         <Input value={value} setValue={setValue} />
         <div className='container-button m-0'>
-        <Button name={"add"} onClick={() => action("add")} isDisabled={!value}>Agregar</Button>
-       <Button name={"delete"} onClick={() => handleDelete() } isDisabled={state.length==0}>Eliminar</Button> 
-      </div>
+          <Button name={"add"} onClick={() => action("add")} isDisabled={!value}>Agregar</Button>
+          <Button name={"delete"} onClick={() => handleDelete()} isDisabled={state.length == 0}>Eliminar</Button>
+        </div>
       </div>
 
       <List />
