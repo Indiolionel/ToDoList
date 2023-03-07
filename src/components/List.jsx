@@ -9,6 +9,7 @@ export default function List() {
   return (
     <div className='container-list flex flex-col'>
       {values.map((item, index) => {
+        console.log("item",item)
         const changeColor = index % 2 == 0 ? 'odd' : 'even';
 
         return <div className={`${changeColor}`} key={index}> <Tarea item={item} /> </div>

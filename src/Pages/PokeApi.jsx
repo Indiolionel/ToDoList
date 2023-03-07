@@ -7,7 +7,7 @@ export default function PokeApi() {
 
   const [data, setData] = useState([])
   const [contador, setContador] = useState(0)
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState({})
 
 
   const url = `https://pokeapi.co/api/v2/pokemon`
@@ -25,7 +25,6 @@ export default function PokeApi() {
       });
 
   }, [contador])
-
 
 
 

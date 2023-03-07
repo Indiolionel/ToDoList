@@ -10,6 +10,8 @@ export function listaReducer(state = [], action) {
 
     case 'add':
       const list = [...state, action.value]
+      console.log("valueObject",action.value)
+      console.log("list",list)
       localStorage.setItem("list", JSON.stringify(list))
       return list
 
@@ -18,7 +20,7 @@ export function listaReducer(state = [], action) {
       return []
 
     case 'delete-row':
-      const deleteRow = state.filter((element) => element !== action.value)
+      const deleteRow = state.filter((element) => element.id !== action.value)
       localStorage.setItem("list", JSON.stringify(deleteRow))
       return deleteRow //Si hay tareas repetidas en la lista, los elimina juntos...
 

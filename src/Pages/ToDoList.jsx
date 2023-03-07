@@ -10,14 +10,16 @@ export default function ToDoList() {
 const state = useSelector(state => state.lista)
 console.log(state)
   const dispatch = useDispatch()
+  
+  const [value, setValue] = useState("")
+  const [id, setId] = useState(0)
+  
   const action = (name) => {
 
+    dispatch({ type: name, value:{id,value} })
+    setId(id+1)
     setValue("")
-    dispatch({ type: name, value })
-
   }
-
-  const [value, setValue] = useState("")
 
 
 
