@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function ToDoList() {
 
   const state = useSelector(state => state.lista)
-  console.log(state)
   const dispatch = useDispatch()
 
   const [value, setValue] = useState("")

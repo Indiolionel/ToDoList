@@ -10,8 +10,6 @@ export function listaReducer(state = [], action) {
 
     case 'add':
       const list = [...state, action.value]
-      console.log("valueObject",action.value)
-      console.log("list",list)
       localStorage.setItem("list", JSON.stringify(list))
       return list
 
