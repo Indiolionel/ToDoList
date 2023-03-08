@@ -18,7 +18,7 @@ export default function Card({ name, url }) {
 
     return (
 
-        name ? <div className="group relative">
+        name ? <div className="group relative cursor-pointer">
             <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none flex flex-col justify-end ">
                 <img
                     src={image}

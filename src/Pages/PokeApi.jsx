@@ -38,7 +38,7 @@ export default function PokeApi() {
 
   function filterPokemon() {
     axios.get(`${url}?limit=100000&offset=0`).then((response => {
-      setData(response.data.results.filter((pokemon) => pokemon.name == value.toLocaleLowerCase()))
+      setData(response.data.results.filter((pokemon) => pokemon.name.toLocaleLowerCase().indexOf(value.toLocaleLowerCase())==0))
 
     }))
       .catch((error) => {
@@ -48,6 +48,9 @@ export default function PokeApi() {
     setValue("")
 
   }
+
+  console.log(value)
+
 
   return (
 
