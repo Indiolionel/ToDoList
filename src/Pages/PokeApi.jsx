@@ -61,15 +61,15 @@ export default function PokeApi() {
           <h2 className="mb-8 text-2xl font-extrabold tracking-tight text-gray-900">Pokemones</h2>
           <div className='flex mb-8'>
           <input className='w-full border p-2 rounded' type="text" placeholder='Ingrese Pokemon' value={value} onChange={(e) => setValue(e.target.value)} />
-          <button onClick={() => filterPokemon()} className="ml-8 bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+          <button onClick={() => filterPokemon()} className="ml-8 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
             Aceptar
           </button>
           </div>
          <div className='flex justify-center'>
-          <button onClick={() => atras()} disabled={contador == 0} className={`bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 border border-blue-700 rounded disabled:opacity-25 disabled:cursor-not-allowed `}>
+          <button onClick={() => atras()} disabled={contador == 0} className={`bg-indigo-600 hover:bg-indigo-700  text-white font-bold py-2 px-4 border border-blue-700 rounded disabled:opacity-25 disabled:cursor-not-allowed `}>
             Atras
           </button>
-          <button onClick={() => siguiente()} className="ml-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+          <button onClick={() => siguiente()} className="ml-8 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
             Siguiente
           </button>
           </div>
